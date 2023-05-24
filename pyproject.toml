@@ -20,6 +20,12 @@ docker-image-py = "^0.1.12"
 shandy-sqlfmt = {extras = ["jinjafmt"], version = "^0.18.1"}
 dagster-dbt = "^0.19.5"
 
+[[tool.poetry.source]]
+name = "grpcio"
+url = "https://github.com/dagster-io/build-grpcio/wiki/Wheels"
+default = false
+secondary = false
+
 [tool.dagster]
 module_name = "cds_pipeline_sample"
 
