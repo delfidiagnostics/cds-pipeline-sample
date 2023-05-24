@@ -6,12 +6,6 @@ authors = ["Tony Wu <wu@delfidiagnostics.com>"]
 readme = "README.md"
 packages = [{include = "cds_pipeline_sample"}]
 
-[[tool.poetry.source]]
-name = "grpcio"
-url = "https://github.com/dagster-io/build-grpcio/wiki/Wheels"
-default = false
-secondary = false
-
 [tool.poetry.dependencies]
 python = "^3.9"
 dbt-postgres = "^1.5.0"
