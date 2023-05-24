@@ -4,7 +4,7 @@ from dagster import file_relative_path
 
 
 DBT_PROJECT_PATH = file_relative_path(__file__, "../../surf_l201")
-DBT_PROFILES = "/Users/tonywu/.dbt"
+DBT_PROFILES = file_relative_path(__file__, "../../surf_l201")
 
 dbt_assets = load_assets_from_dbt_project(
     project_dir=DBT_PROJECT_PATH, profiles_dir=DBT_PROFILES, key_prefix=["surf_l201"]

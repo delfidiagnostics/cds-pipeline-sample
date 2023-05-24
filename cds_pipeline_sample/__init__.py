@@ -28,5 +28,5 @@ defs = Definitions(
 
 # If you want to debug locally without running a dagit instance, you can uncomment the following.
 # This runs the load_all_job job which runs all assets.
-# if __name__ == "__main__":
-#     _result = defs.get_job_def("run_everything").execute_in_process()
+if __name__ == "__main__":
+    _result = defs.get_job_def("run_everything").execute_in_process()
