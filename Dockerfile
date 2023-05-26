@@ -2,6 +2,7 @@ FROM python:3.9-slim
 
 WORKDIR /dagster/
 
+ENV PYTHONPATH="${PYTHONPATH}:/dagster/"
 ENV BUILD_VERSION=dev
 
 COPY requirements.txt ./
