@@ -28,6 +28,7 @@ select
     spin2_volume as volume_ml,
     hemolysis_rating,
     null as hemolysis_raw,
+    quality as sample_issues,
     case
         when
             preprocessed_blood_volume >= 5
