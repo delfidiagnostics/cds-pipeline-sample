@@ -13,6 +13,6 @@ s3 = boto3.client("s3")
 s3.download_file(bucket, s3_file, local_file)
 
 # define dbt assets
-dbt_assets = load_assets_from_dbt_project(
-    project_dir=DBT_PROJECT_PATH, profiles_dir=DBT_PROFILES, key_prefix=["staging"]
+dbt_assets = load_assets_from_dbt_project(  
+    project_dir=DBT_PROJECT_PATH, profiles_dir=DBT_PROFILES, key_prefix=["staging"], node_info_to_group_fn=lambda k: "cds_pipeline_sample"
 )
