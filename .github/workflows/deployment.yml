@@ -1,0 +1,62 @@
+name: deployment
+on:
+  push:
+    branches:
+      - dev
+      - staging
+#      - main
+
+env:
+  AWS_REGION: us-east-1
+  ECR_REPOSITORY: cds-pipeline-sample
+  BUILD_VERSION: dev
+
+jobs:
+  deploy-to-eks:
+    name: Build and Deploy Image to ECR
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+#      - name: Set env to production
+#        if: endsWith(github.ref, '/main')
+#        run: |
+#          echo "BUILD_VERSION=prod" >> $GITHUB_ENV
+
+      - name: Create image tag
+        run: |
+          echo "IMAGE_TAG=${{ github.run_number }}-${{ env.BUILD_VERSION }}" >> $GITHUB_ENV
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Login to Amazon ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v1
+
+      - name: Build, tag, and push image to Amazon ECR
+        id: build-image
+        env:
+          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+        run: |
+          docker build --no-cache --build-arg BUILD_VERSION=$BUILD_VERSION . -f Dockerfile -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+          docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+
+      - name: Trigger Dagster Workflow
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.PAT_TOKEN }}
+          script: |
+            github.rest.actions.createWorkflowDispatch({
+              owner: 'delfidiagnostics',
+              repo: 'cds-dagster',
+              workflow_id: 'deployment.yaml',
+              ref: 'dev',
+            })
