@@ -2,8 +2,8 @@
 version: 2
 
 sources:
-  - name: external_source
+  - name: sample_source
     meta:
-      external_location: "s3://delfi-clindev/cds-pipeline-data/dev/liver/foda/raw/{name}.parquet"
+      external_location: "s3://delfi-clindev/sample_management/surf/{name}.parquet"
     tables:
-      - name: raw
+      - name: STAGING_dt_raw_LIMS_database

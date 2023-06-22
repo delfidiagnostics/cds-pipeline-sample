@@ -19,7 +19,8 @@ docker = "^6.1.2"
 docker-image-py = "^0.1.12"
 dagster-dbt = "^0.19.5"
 grpcio = "<=1.47.5"
-dbt-duckdb = "^1.5.1"
+dbt-duckdb = "1.5.1"
+delfipypr = {git = "ssh://git@github.com/delfidiagnostics/delfipypr.git"}
 
 [tool.dagster]
 module_name = "cds_pipeline_sample"
