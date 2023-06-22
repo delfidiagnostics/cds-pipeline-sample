@@ -6,7 +6,6 @@ from dagster import (
     Definitions,
     load_assets_from_modules,
 )
-
 from cds_pipeline_sample import assets
 from cds_pipeline_sample.assets import DBT_PROFILES, DBT_PROJECT_PATH
 

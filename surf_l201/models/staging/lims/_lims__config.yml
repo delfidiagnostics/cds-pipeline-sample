@@ -2,9 +2,8 @@
 version: 2
 
 sources:
-  - name: staging
-    database: surf
-    schema: public
-
+  - name: sample_source
+    meta:
+      external_location: "s3://delfi-clindev/sample_management/surf/{name}.parquet"
     tables:
-      - name: raw_lims
+      - name: STAGING_dt_raw_LIMS_database
