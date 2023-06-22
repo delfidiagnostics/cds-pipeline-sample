@@ -34,6 +34,6 @@ models:
   surf_l201:
     # Config indicated by + and applies to all files under models/example/
     staging:
-      +materialized: view
+      +materialized: external
     analytic:
-      +materialized: table
+      +materialized: external

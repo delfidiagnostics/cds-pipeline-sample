@@ -1,6 +1,8 @@
 
+{{ config(materialized='external') }}
+
 with
-    source as (select * from {{ source("staging", "raw_lims") }}),
+    source as (select * from {{ source("sample_source", "STAGING_dt_raw_LIMS_database") }}),
     renamed as (
         select
             {{ adapter.quote("sampleId") }} as sample_id,
