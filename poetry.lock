@@ -668,22 +668,6 @@ files = [
 ]
 
 [[package]]
-name = "dbt-postgres"
-version = "1.5.2"
-description = "The postgres adapter plugin for dbt (data build tool)"
-category = "main"
-optional = false
-python-versions = ">=3.7"
-files = [
-    {file = "dbt-postgres-1.5.2.tar.gz", hash = "sha256:a832f9d457eb91edc5d2ee3f1551d44db7e01aab41244f7fdb94e47ce4998f3a"},
-    {file = "dbt_postgres-1.5.2-py3-none-any.whl", hash = "sha256:2df135cd11b29263a668ddc0ae391aaeed324a7c98a15afa13ef795209f5216d"},
-]
-
-[package.dependencies]
-dbt-core = "1.5.2"
-psycopg2-binary = ">=2.8,<3.0"
-
-[[package]]
 name = "delfipypr"
 version = "0.5.0"
 description = "Python package with common tools for pipelines and dashboards."
@@ -3089,4 +3073,4 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.9"
-content-hash = "d6c368709cc48222fad02b8c283254e4c722cb13285c15f515cffad49d403482"
+content-hash = "b7042f85e68a60acd25db9e897e38fa13f62f8e3fbab77a5076463df6a160a31"

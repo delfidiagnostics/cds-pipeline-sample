@@ -34,5 +34,3 @@ defs = Definitions(
 # if you want to debug locally without running a dagit instance, you can uncomment the following
 if __name__ == "__main__":
     _result = defs.get_job_def("run_everything").execute_in_process()
-    local_file = DBT_PROFILES + "/profiles.yml"
-    os.remove(local_file)

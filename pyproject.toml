@@ -10,7 +10,6 @@ packages = [{include = "cds_pipeline_sample"}]
 python = "^3.9"
 dagster = "^1.3.5"
 dagit = "^1.3.5"
-dbt-postgres = "^1.5.0"
 dagster-aws = "^0.19.5"
 dagster-graphql = "^1.3.5"
 dagster-k8s = "^0.19.5"
