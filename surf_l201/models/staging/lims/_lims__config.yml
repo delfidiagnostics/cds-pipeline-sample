@@ -7,3 +7,16 @@ sources:
       external_location: "s3://delfi-clindev/sample_management/surf/{name}.parquet"
     tables:
       - name: STAGING_dt_raw_LIMS_database
+
+models:
+  - name: stg_lims__l201
+    config:
+      tags: ['raw_sample']
+    columns:
+      - name: sample_id
+        description: "unique identifier for an aliquot"
+        test:
+          - unique
+      - name: specimen_type
+        description: "DNA or RNA plasma tube"
+        
